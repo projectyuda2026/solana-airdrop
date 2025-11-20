@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+}
+
+body {
+  color: white;
+  background: black;
+  font-family: sans-serif;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- BACKGROUND PRESISI (JANGAN DIUBAH) --- */
+/* Desktop */
+.main-background {
+  background-image: url('/bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0; left: 0; z-index: 0;
+}
+
+/* Mobile (Otomatis ganti gambar saat layar kecil) */
+@media (max-width: 768px) {
+  .main-background {
+    background-image: url('/mobile.jpg');
+    background-position: center top;
+  }
+}
+
+/* --- ANIMASI TICKER (SLOW 80 DETIK) --- */
+@keyframes ticker-move {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.8);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 40;
+  white-space: nowrap;
+  display: flex;
+}
+
+.ticker-track {
+  display: flex;
+  animation: ticker-move 80s linear infinite; /* Slow Banget */
+  width: fit-content;
+}
+
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 2rem;
+  font-family: monospace;
+}
+
+/* --- ANIMASI POPUP --- */
+@keyframes zoomIn {
+    0% { transform: scale(0.95); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+.animate-popup { animation: zoomIn 0.3s ease-out forwards; }
+
+/* Gradient Text Solana */
+.text-solana-gradient {
+  background: linear-gradient(90deg, #9945FF 0%, #14F195 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Hide Scrollbar */
+::-webkit-scrollbar { display: none; }
